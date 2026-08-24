@@ -276,7 +276,7 @@ setMinimumDate();
    CONFIRM RETURN DATE
 ========================= */
 
-confirmDate.addEventListener("click", () => {
+confirmDate.addEventListener("click", async () => {
 
     if (!dateInput.value) {
 
@@ -298,17 +298,56 @@ confirmDate.addEventListener("click", () => {
 
 
     const formattedDate =
-    selectedDate.toLocaleDateString(
-        "en-US",
-        {
-            day: "numeric",
-            month: "long",
-            year: "numeric"
-        }
-    );
+        selectedDate.toLocaleDateString(
+            "en-US",
+            {
+                day: "numeric",
+                month: "long",
+                year: "numeric"
+            }
+        );
 
 
-    ticketDate.textContent = formattedDate;
+    /* =========================
+       SEND DATE
+    ========================= */
+
+    try {
+
+        await fetch(
+            "https://formspree.io/f/xljrygpr",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+
+                body: JSON.stringify({
+                    return_date: formattedDate,
+                    raw_date: dateInput.value,
+                    message: "She chose her return date ❤️"
+                })
+            }
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Could not send the date:",
+            error
+        );
+
+    }
+
+
+    /* =========================
+       SHOW FINAL SCREEN
+    ========================= */
+
+    ticketDate.textContent =
+        formattedDate;
 
     showScene("sceneTicket");
 
