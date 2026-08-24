@@ -1,0 +1,1445 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow-x: hidden;
+
+    padding: 20px;
+
+    font-family: "DM Sans", sans-serif;
+
+    color: #74394e;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff5f8,
+            #ffe2ec
+        );
+}
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.background {
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.blob {
+    position: absolute;
+
+    width: 450px;
+    height: 450px;
+
+    border-radius: 50%;
+
+    filter: blur(80px);
+
+    opacity: 0.45;
+
+    animation:
+        blobFloat 12s ease-in-out infinite;
+}
+
+.blob-1 {
+    background: #ffc0d4;
+
+    top: -200px;
+    left: -150px;
+}
+
+.blob-2 {
+    background: #ffd0e3;
+
+    bottom: -250px;
+    right: -150px;
+
+    animation-delay: -4s;
+}
+
+.blob-3 {
+    background: #ffe4ef;
+
+    top: 30%;
+    left: 50%;
+
+    animation-delay: -8s;
+}
+
+@keyframes blobFloat {
+    0%,
+    100% {
+        transform:
+            translate(0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate(40px, 60px)
+            scale(1.15);
+    }
+}
+
+
+/* =========================
+   MAIN APP
+========================= */
+
+.app {
+    position: relative;
+
+    z-index: 10;
+
+    width: 100%;
+    max-width: 650px;
+
+    min-height: 680px;
+
+    border-radius: 40px;
+
+    background:
+        rgba(255, 255, 255, 0.6);
+
+    backdrop-filter:
+        blur(30px);
+
+    -webkit-backdrop-filter:
+        blur(30px);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.8);
+
+    box-shadow:
+        0 30px 100px
+        rgba(190, 77, 120, 0.18);
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   SCENES
+========================= */
+
+.scene {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    min-height: 680px;
+
+    padding: 55px;
+
+    display: none;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    opacity: 0;
+}
+
+.scene.active {
+    display: flex;
+
+    animation:
+        sceneAppear
+        0.7s
+        cubic-bezier(0.22, 1, 0.36, 1)
+        forwards;
+}
+
+@keyframes sceneAppear {
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================
+   TEXT
+========================= */
+
+h1 {
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(34px, 5vw, 54px);
+
+    line-height: 1.15;
+
+    color: #b63e67;
+
+    margin-bottom: 22px;
+}
+
+h2 {
+    font-family:
+        "Playfair Display",
+        serif;
+
+    color: #b63e67;
+
+    font-size: 34px;
+
+    line-height: 1.2;
+}
+
+p {
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    color: #805264;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+    border: none;
+
+    cursor: pointer;
+
+    font-family:
+        "DM Sans",
+        sans-serif;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    color: white;
+
+    padding:
+        17px 30px;
+
+    border-radius: 18px;
+
+    margin-top: 32px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e45b8a,
+            #bd3d68
+        );
+
+    box-shadow:
+        0 15px 35px
+        rgba(189, 61, 104, 0.25);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+button:hover {
+    transform:
+        translateY(-4px)
+        scale(1.03);
+
+    box-shadow:
+        0 22px 45px
+        rgba(189, 61, 104, 0.35);
+}
+
+button:active {
+    transform:
+        scale(0.97);
+}
+
+
+/* =========================
+   ENVELOPE
+========================= */
+
+.envelope-wrapper {
+    margin-bottom: 40px;
+}
+
+.envelope {
+    width: 280px;
+    height: 190px;
+
+    position: relative;
+
+    cursor: pointer;
+
+    perspective: 1000px;
+}
+
+
+/* Задняя часть конверта */
+
+.envelope-back {
+    position: absolute;
+
+    inset: 0;
+
+    background: #f6a6c0;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 20px 40px
+        rgba(183, 61, 105, 0.18);
+
+    z-index: 1;
+}
+
+
+/* Само письмо */
+
+.letter {
+    position: absolute;
+
+    width: 82%;
+    height: 155px;
+
+    left: 9%;
+
+    bottom: 12px;
+
+    background: #fffafa;
+
+    border-radius: 12px;
+
+    z-index: 2;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    color: #b63e67;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 20px;
+
+    box-shadow:
+        0 10px 25px
+        rgba(0, 0, 0, 0.08);
+
+    transition:
+        transform 0.8s ease;
+
+    pointer-events: none;
+}
+
+
+.letter-heart {
+    font-size: 30px;
+}
+
+
+/* Левая часть конверта */
+
+.envelope-front {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 3;
+
+    pointer-events: none;
+
+    background: #f3a0ba;
+
+    clip-path:
+        polygon(
+            0 0,
+            50% 58%,
+            100% 0,
+            100% 100%,
+            0 100%
+        );
+
+    border-radius: 10px;
+}
+
+
+/* Дополнительные складки */
+
+.envelope-front::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: #ef94b2;
+
+    clip-path:
+        polygon(
+            0 0,
+            50% 58%,
+            0 100%
+        );
+}
+
+
+.envelope-front::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: #f7acc4;
+
+    clip-path:
+        polygon(
+            100% 0,
+            50% 58%,
+            100% 100%
+        );
+}
+
+
+/* Верхний клапан */
+
+.envelope-flap {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 105px;
+
+    background: #ffb8ce;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
+
+    transform-origin: top center;
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform 0.8s
+        cubic-bezier(0.22, 1, 0.36, 1);
+
+    z-index: 5;
+
+    backface-visibility: hidden;
+}
+
+
+/* =========================
+   OPEN ENVELOPE
+========================= */
+
+.envelope.open .envelope-flap {
+    transform:
+        rotateX(180deg);
+}
+
+
+.envelope.open .letter {
+    transform:
+        translateY(-115px);
+
+    z-index: 6;
+}
+
+/* =========================
+   LETTER SCENE
+========================= */
+
+.letter-icon {
+    font-size: 70px;
+
+    margin-bottom: 20px;
+
+    flex-shrink: 0;
+
+    animation:
+        floatIcon 3s ease-in-out infinite;
+}
+
+@keyframes floatIcon {
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-12px);
+    }
+}
+
+
+/* ВАЖНО:
+   фиксируем область письма,
+   чтобы текст не двигал всю сцену */
+
+.message-box {
+    width: 100%;
+    max-width: 520px;
+
+    min-height: 360px;
+    max-height: 390px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: flex-start;
+
+    padding: 10px 15px;
+
+    overflow-y: auto;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        rgba(198, 71, 112, 0.3)
+        transparent;
+}
+
+#typingText {
+    width: 100%;
+
+    margin: 0;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(20px, 3.4vw, 27px);
+
+    line-height: 1.55;
+
+    color: #9e3c5d;
+
+    text-align: center;
+
+    white-space: pre-line;
+
+    overflow-wrap: break-word;
+
+    word-break: normal;
+}
+
+
+/* Курсор отключён,
+   чтобы он не съезжал */
+
+.cursor {
+    display: none;
+}
+
+
+/* Кнопка появляется после текста */
+
+.hidden-button {
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform:
+        translateY(15px);
+}
+
+.hidden-button.show {
+    animation:
+        buttonAppear
+        0.5s ease
+        forwards;
+}
+
+@keyframes buttonAppear {
+    to {
+        opacity: 1;
+
+        pointer-events: auto;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================
+   GAME
+========================= */
+
+.game-top {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    text-align: left;
+}
+
+.small-title {
+    display: block;
+
+    color: #c75a7d;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 8px;
+}
+
+.score-box {
+    flex-shrink: 0;
+
+    background:
+        rgba(255, 255, 255, 0.65);
+
+    border-radius: 20px;
+
+    padding: 15px 20px;
+
+    color: #b63e67;
+}
+
+.score-box span {
+    font-size: 26px;
+
+    font-weight: 700;
+}
+
+.game-description {
+    width: 100%;
+
+    text-align: left;
+
+    margin:
+        18px 0 25px;
+}
+
+.game-area {
+    width: 100%;
+
+    height: 320px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 222, 235, 0.8),
+            rgba(255, 246, 249, 0.9)
+        );
+
+    border:
+        1px solid
+        rgba(198, 78, 118, 0.15);
+}
+
+.game-heart {
+    position: absolute;
+
+    width: 72px;
+    height: 72px;
+
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: 32px;
+
+    animation:
+        pulseHeart 1.4s infinite;
+}
+
+@keyframes pulseHeart {
+    0%,
+    100% {
+        transform:
+            scale(1);
+    }
+
+    50% {
+        transform:
+            scale(1.12);
+    }
+}
+
+.game-progress {
+    width: 100%;
+
+    height: 8px;
+
+    margin-top: 25px;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    background:
+        rgba(198, 78, 118, 0.12);
+}
+
+.game-progress-fill {
+    width: 0%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #e76b96,
+            #c33f69
+        );
+
+    transition:
+        width 0.4s ease;
+}
+
+
+/* =========================
+   DATE
+========================= */
+
+.date-heart {
+    font-size: 80px;
+
+    margin-bottom: 15px;
+
+    animation:
+        floatIcon 3s ease-in-out infinite;
+}
+
+.date-text {
+    max-width: 480px;
+
+    margin-top: 10px;
+}
+
+.date-input-wrapper {
+    width: 100%;
+    max-width: 420px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-top: 30px;
+
+    text-align: left;
+}
+
+.date-input-wrapper label {
+    font-weight: 600;
+
+    color: #a34162;
+}
+
+input[type="date"] {
+    width: 100%;
+
+    padding: 17px;
+
+    border-radius: 16px;
+
+    border:
+        1px solid
+        rgba(194, 60, 103, 0.2);
+
+    background:
+        rgba(255, 255, 255, 0.75);
+
+    color: #80475b;
+
+    font-family:
+        "DM Sans",
+        sans-serif;
+
+    outline: none;
+
+    transition:
+        0.3s;
+}
+
+input[type="date"]:focus {
+    border-color:
+        #d4567f;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(212, 86, 127, 0.1);
+}
+
+
+/* =========================
+   TICKET
+========================= */
+
+.ticket-title {
+    margin-bottom: 28px;
+}
+
+.ticket-title > span {
+    display: block;
+
+    color: #c65c7d;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+}
+
+.ticket {
+    width: 100%;
+    max-width: 500px;
+
+    border-radius: 28px;
+
+    padding: 28px;
+
+    text-align: left;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #fff5f8
+        );
+
+    box-shadow:
+        0 20px 60px
+        rgba(181, 55, 97, 0.15);
+}
+
+.ticket::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 7px;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ec7098,
+            #bd3e67
+        );
+}
+
+.ticket-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.ticket-label {
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    color: #c76583;
+}
+
+.ticket-heart {
+    font-size: 25px;
+
+    color: #d24f78;
+}
+
+.ticket-date {
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 42px;
+
+    color: #b83f66;
+
+    margin: 20px 0;
+}
+
+.ticket-line {
+    width: 100%;
+
+    border-top:
+        2px dashed
+        rgba(188, 66, 105, 0.2);
+}
+
+.ticket-info {
+    display: grid;
+
+    gap: 18px;
+
+    padding: 25px 0;
+}
+
+.ticket-info div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.ticket-info span {
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+
+    color: #bd7890;
+}
+
+.ticket-info strong {
+    color: #87485e;
+
+    font-size: 16px;
+}
+
+.ticket-bottom {
+    border-top:
+        1px solid
+        rgba(188, 66, 105, 0.12);
+
+    padding-top: 18px;
+
+    font-size: 9px;
+
+    letter-spacing: 1.3px;
+
+    color: #bd7890;
+}
+
+
+/* =========================
+   FINAL MESSAGE
+========================= */
+
+.final-message {
+    margin-top: 28px;
+
+    max-width: 450px;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 21px;
+
+    color: #a23d5e;
+}
+
+
+/* =========================
+   FLOATING ELEMENTS
+========================= */
+
+.floating-heart {
+    position: fixed;
+
+    bottom: -50px;
+
+    pointer-events: none;
+
+    z-index: 2;
+
+    opacity: 0;
+
+    animation:
+        floatUp linear forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.5;
+    }
+
+    90% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform:
+            translateY(-115vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+.confetti {
+    position: fixed;
+
+    top: -30px;
+
+    z-index: 100;
+
+    pointer-events: none;
+
+    animation:
+        confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+    to {
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+
+    body {
+        padding: 12px;
+    }
+
+    .app {
+        min-height: 620px;
+
+        border-radius: 30px;
+    }
+
+    .scene {
+        min-height: 620px;
+
+        padding:
+            38px 22px;
+    }
+
+    h1 {
+        font-size:
+            clamp(30px, 9vw, 42px);
+    }
+
+    h2 {
+        font-size: 27px;
+    }
+
+    .envelope {
+        transform:
+            scale(0.85);
+
+        margin-bottom:
+            -20px;
+    }
+
+    .letter-icon {
+        font-size: 60px;
+
+        margin-bottom: 12px;
+    }
+
+    .message-box {
+        min-height: 330px;
+        max-height: 360px;
+
+        padding:
+            5px 5px;
+    }
+
+    #typingText {
+        font-size: 20px;
+
+        line-height: 1.5;
+    }
+
+    .hidden-button {
+        margin-top: 20px;
+    }
+
+    .game-top {
+        align-items:
+            flex-start;
+
+        gap: 12px;
+    }
+
+    .game-area {
+        height: 270px;
+    }
+
+    .ticket {
+        padding: 22px;
+    }
+
+    .ticket-date {
+        font-size: 34px;
+    }
+
+    .final-message {
+        font-size: 19px;
+    }
+
+}
+
+/* =========================
+   DATE SCENE FIX
+========================= */
+
+#sceneDate {
+    justify-content: flex-start;
+
+    padding-top: 35px;
+    padding-bottom: 35px;
+
+    overflow-y: auto;
+}
+
+
+/* Heart */
+
+#sceneDate .date-heart {
+    font-size: 65px;
+
+    margin-top: 0;
+    margin-bottom: 8px;
+
+    line-height: 1;
+
+    flex-shrink: 0;
+}
+
+
+/* Challenge completed */
+
+#sceneDate .small-title {
+    margin-bottom: 6px;
+}
+
+
+/* Title */
+
+#sceneDate h1 {
+    font-size: clamp(32px, 4.5vw, 48px);
+
+    margin-bottom: 15px;
+}
+
+
+/* Main text */
+
+#sceneDate .date-text {
+    line-height: 1.55;
+
+    margin-top: 0;
+}
+
+
+/* Date input */
+
+#sceneDate .date-input-wrapper {
+    margin-top: 20px;
+
+    gap: 8px;
+}
+
+
+/* Button */
+
+#sceneDate #confirmDate {
+    margin-top: 20px;
+
+    flex-shrink: 0;
+}
+
+@media (max-width: 650px) {
+
+    #sceneDate {
+        padding-top: 25px;
+        padding-bottom: 30px;
+    }
+
+    #sceneDate .date-heart {
+        font-size: 55px;
+    }
+
+    #sceneDate h1 {
+        font-size: 31px;
+
+        margin-bottom: 12px;
+    }
+
+    #sceneDate .date-text {
+        font-size: 15px;
+
+        line-height: 1.45;
+    }
+
+    #sceneDate .date-input-wrapper {
+        margin-top: 15px;
+    }
+
+    #sceneDate #confirmDate {
+        margin-top: 15px;
+        padding: 15px 25px;
+    }
+
+}
+
+/* =========================
+   FINAL TICKET FIX
+========================= */
+
+#sceneTicket {
+    justify-content: flex-start;
+
+    padding-top: 45px;
+    padding-bottom: 35px;
+
+    overflow-y: auto;
+}
+
+
+/* Заголовок */
+
+#sceneTicket .ticket-title {
+    margin-bottom: 20px;
+
+    flex-shrink: 0;
+}
+
+
+#sceneTicket .ticket-title h1 {
+    margin-bottom: 0;
+
+    font-size: clamp(34px, 5vw, 50px);
+}
+
+
+/* Сам билет */
+
+#sceneTicket .ticket {
+    flex-shrink: 0;
+
+    padding: 25px;
+
+    margin: 0 auto;
+}
+
+
+/* Дата */
+
+#sceneTicket .ticket-date {
+    font-size: clamp(28px, 4.5vw, 42px);
+
+    line-height: 1.2;
+
+    overflow-wrap: anywhere;
+
+    margin: 18px 0;
+}
+
+
+/* Информация внутри билета */
+
+#sceneTicket .ticket-info {
+    gap: 14px;
+
+    padding: 20px 0;
+}
+
+
+/* Финальный текст */
+
+#sceneTicket .final-message {
+    margin-top: 20px;
+
+    font-size: clamp(18px, 3vw, 21px);
+
+    line-height: 1.5;
+
+    flex-shrink: 0;
+}
+
+
+/* Кнопка */
+
+#sceneTicket #restartButton {
+    margin-top: 20px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================
+   MOBILE FIX
+========================= */
+
+@media (max-width: 650px) {
+
+    #sceneTicket {
+        padding:
+            28px 20px;
+    }
+
+
+    #sceneTicket .ticket-title {
+        margin-bottom: 15px;
+    }
+
+
+    #sceneTicket .ticket-title h1 {
+        font-size: 36px;
+    }
+
+
+    #sceneTicket .ticket {
+        padding: 20px;
+    }
+
+
+    #sceneTicket .ticket-date {
+        font-size: 30px;
+
+        margin:
+            15px 0;
+    }
+
+
+    #sceneTicket .ticket-info {
+        gap: 12px;
+
+        padding:
+            16px 0;
+    }
+
+
+    #sceneTicket .ticket-info strong {
+        font-size: 15px;
+    }
+
+
+    #sceneTicket .final-message {
+        margin-top: 16px;
+
+        font-size: 18px;
+    }
+
+
+    #sceneTicket #restartButton {
+        margin-top: 16px;
+
+        padding:
+            14px 24px;
+    }
+
+}

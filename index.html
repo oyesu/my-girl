@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="A little something made especially for you ❤️">
+
+    <title>Something For You ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Animated background -->
+    <div class="background">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+
+    <main class="app">
+
+        <!-- =========================
+             SCENE 1 — ENVELOPE
+        ========================== -->
+
+        <section class="scene active" id="sceneIntro">
+
+            <div class="envelope-wrapper">
+
+                <div class="envelope" id="envelope">
+
+                    <div class="envelope-back"></div>
+
+                    <div class="letter">
+
+                        <div class="letter-heart">
+                            ❤️
+                        </div>
+
+                        <span>
+                            Just for you
+                        </span>
+
+                    </div>
+
+                    <div class="envelope-front"></div>
+
+                    <div class="envelope-flap"></div>
+
+                </div>
+
+            </div>
+
+
+            <h1>
+                Looks like you have a letter...
+            </h1>
+
+            <p>
+                I think you should open it 💌
+            </p>
+
+            <button id="openLetter">
+                Open the letter
+            </button>
+
+        </section>
+
+
+
+        <!-- =========================
+             SCENE 2 — LETTER
+        ========================== -->
+
+        <section class="scene" id="sceneLetter">
+
+            <div class="letter-icon">
+                💌
+            </div>
+
+            <div class="message-box">
+                <p id="typingText"></p>
+                <span class="cursor"></span>
+            </div>
+
+            <button class="hidden-button" id="continueToGame">
+                Continue ❤️
+            </button>
+
+        </section>
+
+
+
+        <!-- =========================
+             SCENE 3 — MINI GAME
+        ========================== -->
+
+        <section class="scene" id="sceneGame">
+
+            <div class="game-top">
+
+                <div>
+
+                    <span class="small-title">
+                        A LITTLE CHALLENGE
+                    </span>
+
+                    <h2>
+                        Catch my heart ❤️
+                    </h2>
+
+                </div>
+
+
+                <div class="score-box">
+
+                    <span id="score">
+                        0
+                    </span>
+
+                    <small>
+                        / 7
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <p class="game-description">
+                It seems to be missing you too...
+            </p>
+
+
+            <div class="game-area" id="gameArea">
+
+                <button
+                    class="game-heart"
+                    id="gameHeart"
+                    aria-label="Catch the heart"
+                >
+                    ❤️
+                </button>
+
+            </div>
+
+
+            <div class="game-progress">
+                <div
+                    class="game-progress-fill"
+                    id="gameProgress"
+                ></div>
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             SCENE 4 — RETURN DATE
+        ========================== -->
+
+        <section class="scene" id="sceneDate">
+
+            <div class="date-heart">
+                💗
+            </div>
+
+            <span class="small-title">
+                CHALLENGE COMPLETED
+            </span>
+
+            <h1>
+                Now for the important question...
+            </h1>
+
+
+            <p class="date-text">
+
+                Okay, you caught my heart.
+
+                <br><br>
+
+                So now there's only one thing
+                I really need to know...
+
+                <br><br>
+
+                When exactly are you coming back?
+
+                <br><br>
+
+                Because this place just isn't quite
+                the same without you.
+
+                <br>
+
+                And apparently, I miss you
+                a little more than I expected ❤️
+
+            </p>
+
+
+            <div class="date-input-wrapper">
+
+                <label for="dateInput">
+                    Choose the day you'll be back home ❤️
+                </label>
+
+                <input
+                    type="date"
+                    id="dateInput"
+                >
+
+            </div>
+
+
+            <button id="confirmDate">
+                Confirm the date ❤️
+            </button>
+
+        </section>
+
+
+
+        <!-- =========================
+             SCENE 5 — FINAL
+        ========================== -->
+
+        <section class="scene" id="sceneTicket">
+
+            <div class="ticket-title">
+
+                <span>
+                    RETURN DATE CONFIRMED
+                </span>
+
+                <h1>
+                    Finally, I know ❤️
+                </h1>
+
+            </div>
+
+
+
+            <div class="ticket">
+
+                <div class="ticket-top">
+
+                    <span class="ticket-label">
+                        RETURN DATE
+                    </span>
+
+                    <span class="ticket-heart">
+                        ♥
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="ticket-date"
+                    id="ticketDate"
+                >
+                    Your return
+                </div>
+
+
+                <div class="ticket-line"></div>
+
+
+                <div class="ticket-info">
+
+                    <div>
+
+                        <span>
+                            WHO'S COMING HOME
+                        </span>
+
+                        <strong>
+                            The girl I miss ❤️
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            DESTINATION
+                        </span>
+
+                        <strong>
+                            Home
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            WAITING FOR YOU
+                        </span>
+
+                        <strong>
+                            Me ❤️
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="ticket-bottom">
+
+                    <span>
+                        COUNTING THE DAYS UNTIL YOU'RE HOME
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <p class="final-message">
+
+                Now all that's left
+                is for me to wait...
+
+                <br><br>
+
+                Come back soon.
+
+                Home misses you.
+
+                <br>
+
+                And I miss you even more ❤️
+
+            </p>
+
+
+            <button id="restartButton">
+                Read it again ↻
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- Floating elements -->
+    <div id="floatingElements"></div>
+
+    <!-- Confetti -->
+    <div id="confettiContainer"></div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
